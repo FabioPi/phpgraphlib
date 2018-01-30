@@ -923,7 +923,7 @@ class PHPGraphLib {
 
 	protected function displayErrors() 
 	{
-		if (count($this->error) > 0) {
+		if ( isset($this->error) and (count($this->error) > 0) ) {    // for working with PHP 7.2 
 			$lineHeight = 12;
 			$errorColor = imagecolorallocate($this->image, 0, 0, 0);
 			$errorBackColor = imagecolorallocate($this->image, 255, 204, 0);
@@ -984,7 +984,7 @@ class PHPGraphLib {
 		}
 		$this->lowest_x = $low_x;
 		$this->highest_x = $high_x;
-		$raw_size = $high_x - $low_x +1;
+		@$raw_size = $high_x - $low_x +1;    
 		if ($raw_size > $this->data_count) {
 			$this->data_count = $raw_size;
 		}
